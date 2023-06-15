@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="text-center py-5" style="background-color: #f5f5f5;">
+        <div class="container">
+            <h1 class="display-4 mb-4">Hola, mi nombre es Hurtado Maximiliano</h1>
+            <p class="lead">Soy alumno de CoderHouse, perteneciente a la comisión 40445, y este es mi primer proyecto realizado en Django. Estoy emocionado de presentar este sitio web desarrollado con Python y compartirlo contigo. Espero que te guste </p>
+            <img src="{% static 'home/img/img_maxi.JPEG' %}" alt="Icono de construcción" style="max-width: 400px; height: auto;">
+        </div>
+    </section>
+{% endblock %}
