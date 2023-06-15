@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={"class": "form-control"}))
+    is_staff = forms.BooleanField(label="Es miembro del personal", required=False)
+
 
     class Meta:
         model = User

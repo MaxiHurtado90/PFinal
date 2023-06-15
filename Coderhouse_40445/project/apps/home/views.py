@@ -26,14 +26,18 @@ def user_logout(request):
     return render(request, 'home/logout.html')
 
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.is_staff = form.cleaned_data.get("is_staff", False)
+            user.save()
             return redirect('home:index')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'home/register.html', {'form': form})
+    
+    context = {'form': form}
+    return render(request, 'home/register.html', context)
 
 def about (request):
     return render(request, 'home/about.html')
