@@ -1,9 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from .forms import CustomAuthenticationForm, CustomUserCreationForm
+from venta.models import Vendedor
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 def index(request):
     return render(request, 'home/index.html')
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -21,16 +25,26 @@ def user_login(request):
         form = CustomAuthenticationForm()
     return render(request, 'home/login.html', {'form': form})
 
+
 def user_logout(request):
     logout(request)
     return render(request, 'home/logout.html')
+
+
 
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_staff = form.cleaned_data.get("is_staff", False)
+            is_vendedor = form.cleaned_data.get("is_vendedor", False)
+            if request.user.is_superuser:
+                user.is_staff = True
+                user.is_superuser = True
+                user.is_vendedor = True
+                user.save()
+            else:
+                user.is_staff = False
             user.save()
             return redirect('home:index')
     else:
@@ -39,8 +53,10 @@ def register(request):
     context = {'form': form}
     return render(request, 'home/register.html', context)
 
-def about (request):
+
+def about(request):
     return render(request, 'home/about.html')
 
-def about_me (request):
+
+def about_me(request):
     return render(request, 'home/about_me.html')

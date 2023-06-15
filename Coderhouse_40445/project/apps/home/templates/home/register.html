@@ -42,10 +42,18 @@
                             {% endfor %}
                         {% endif %}
                     </div>
-                    <div class="mb-3">
-                        <label for="{{ form.is_staff.id_for_label }}" class="form-label">Es miembro del personal</label>
-                        {{ form.is_staff }}
-                    </div>
+                    {% if form.is_staff is not None %}
+                        <div class="mb-3 form-check">
+                            {{ form.is_staff.label_tag }}
+                            {{ form.is_staff }}
+                        </div>
+                    {% endif %}
+                    {% if form.is_vendedor is not None %}
+                        <div class="mb-3 form-check">
+                            {{ form.is_vendedor.label_tag }}
+                            {{ form.is_vendedor }}
+                        </div>
+                    {% endif %}
                     <div class="d-grid gap-3 mt-3">
                         <button type="submit" class="btn btn-success">Registrar nuevo usuario</button>
                     </div>
