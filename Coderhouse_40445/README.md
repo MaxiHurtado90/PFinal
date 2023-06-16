@@ -32,3 +32,4 @@ Django
 Bootstrap
 CSS: Se utilizó CSS personalizado para agregar estilos adicionales a la aplicación.
 
+El enlace al video de mi app esta aqui : https://www.youtube.com/watch?v=aiyNr-iGyW4
