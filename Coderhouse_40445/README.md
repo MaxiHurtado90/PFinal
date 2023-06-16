@@ -12,7 +12,6 @@ Bootstrap
 Configuración del entorno
 Sigue estos pasos para configurar el entorno de desarrollo:
 
-Clona el repositorio de la aplicación en tu máquina local.
 Crea un entorno virtual con el comando: python -m venv env.
 Activa el entorno virtual con el comando: source env/bin/activate (para sistemas Unix) o .\env\Scripts\activate (para Windows).
 Instala las dependencias del proyecto con el comando: pip install -r requirements.txt.

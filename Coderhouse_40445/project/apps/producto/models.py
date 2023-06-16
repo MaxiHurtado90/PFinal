@@ -20,7 +20,7 @@ class ProductoCategoria(models.Model):
 class Producto(models.Model):
     """Productos que corresponden a una categoría."""
 
-    categoria = models.ForeignKey(ProductoCategoria, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="categoría")
+    categoria = models.ForeignKey(ProductoCategoria, on_delete=models.CASCADE, blank=True, null=True, verbose_name="categoría")
     nombre = models.CharField(max_length=100)
     unidad_de_medida = models.CharField(max_length=50)
     cantidad = models.FloatField()
